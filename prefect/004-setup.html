@@ -183,7 +183,7 @@
                         <div class="step-content">
                             <div class="step-title">Create a Project</div>
                             <div class="step-description">Initialize a new Prefect project</div>
-                            <div class="code-block">prefect create project my-project</div>
+                            <div class="code-block">prefect init --name hello</div>
                         </div>
                     </div>
                     
@@ -192,7 +192,7 @@
                         <div class="step-content">
                             <div class="step-title">Write Your First Flow</div>
                             <div class="step-description">Define tasks and flows with decorators</div>
-                            <div class="code-block">from prefect import flow, task<br><br>@task<br>def my_task():<br>&nbsp;&nbsp;return "Hello"<br><br>@flow<br>def my_flow():<br>&nbsp;&nbsp;result = my_task()<br>&nbsp;&nbsp;print(result)</div>
+                            <div class="code-block">from prefect import flow, task<br><br>@task<br>def my_task():<br>&nbsp;&nbsp;return "Hello"<br><br>@flow<br>def main():<br>&nbsp;&nbsp;result = my_task()<br>&nbsp;&nbsp;print(result)<br><br>if __name__ == "__main__":<br> &nbsp;&nbsp;main()</div>
                         </div>
                     </div>
                     
