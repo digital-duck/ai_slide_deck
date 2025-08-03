@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prefect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f6fa;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        
+        .sidebar {
+            width: 300px;
+            background: #2c3e50;
+            color: white;
+            overflow-y: auto;
+            padding: 20px 0;
+        }
+        
+        .sidebar h2 {
+            text-align: center;
+            padding: 0 20px 20px 20px;
+            border-bottom: 2px solid #34495e;
+            margin-bottom: 20px;
+            color: #ecf0f1;
+            font-size: 1.2em;
+        }
+        
+        .section h3 {
+            background: #34495e;
+            padding: 10px 20px;
+            margin: 10px 0 5px 0;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .slide-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-left: 4px solid transparent;
+            font-size: 0.9em;
+        }
+        
+        .slide-item:hover {
+            background: #34495e;
+        }
+        
+        .slide-item.active {
+            background: #3498db;
+            border-left-color: #2980b9;
+            font-weight: 600;
+        }
+        
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .slide-frame {
+            flex: 1;
+            border: none;
+            background: white;
+        }
+        
+        .navigation {
+            background: white;
+            padding: 15px 30px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .nav-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-btn:hover:not(:disabled) {
+            background: #2980b9;
+        }
+        
+        .nav-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+        
+        .slide-counter {
+            background: #ecf0f1;
+            padding: 10px 20px;
+            text-align: center;
+            color: #2c3e50;
+            font-weight: 600;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: 200px;
+            }
+            
+            .navigation {
+                padding: 10px 15px;
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>🚀 Prefect</h2>
+            <div class="section"><h3>Main</h3>
+            <div class="slide-item active" onclick="loadSlide('prefect_slides/001-intro.html', 0)">
+                001. Introduction to Prefect
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/002-core-features.html', 1)">
+                002. Core Capabilities
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/003-setup.html', 2)">
+                003. Quick Setup
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/004-dynamic-workflow.html', 3)">
+                004. Dynamic Workflows
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/005-task-management.html', 4)">
+                005. Task Management
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/006-deploy.html', 5)">
+                006. Deployment & Scheduling
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/007-observability.html', 6)">
+                007. Monitoring & Observability
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/008-ecosystem.html', 7)">
+                008. Integration Ecosystem
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/009-error-handling.html', 8)">
+                009. Error Handling & Recovery
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/010-best-practices.html', 9)">
+                010. Best Practices
+            </div>
+        </div><div class="section"><h3>Appendix</h3>
+            <div class="slide-item " onclick="loadSlide('prefect_slides/011-prefect-vs-airflow.html', 10)">
+                011. Prefect vs Airflow
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/012-prefect-vs-temporal.html', 11)">
+                012. Prefect vs Temporal
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/013-advanced.html', 12)">
+                013. Advanced Features
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/014-prefect-cloud.html', 13)">
+                014. Prefect Cloud Features
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/015-migration-airflow.html', 14)">
+                015. Migration Strategies
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/016-scalability.html', 15)">
+                016. Performance & Scalability
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/017-testing.html', 16)">
+                017. Testing Strategies
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/018-security.html', 17)">
+                018. Security Best Practices
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/019-troubleshooting.html', 18)">
+                019. Troubleshooting Guide
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/020-resources.html', 19)">
+                020. Resources & Community
+            </div>
+        </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="slide-counter">
+                <span id="current-slide">1</span> / 20
+            </div>
+            
+            <iframe id="slide-frame" class="slide-frame" src="prefect_slides/001-intro.html"></iframe>
+            
+            <div class="navigation">
+                <button class="nav-btn" id="first-btn" onclick="goToSlide(0)">&lt;&lt;</button>
+                <button class="nav-btn" id="prev-btn" onclick="previousSlide()">&lt;</button>
+                <button class="nav-btn" id="next-btn" onclick="nextSlide()">&gt;</button>
+                <button class="nav-btn" id="last-btn" onclick="goToSlide(19)">&gt;&gt;</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const slides = ["prefect_slides/001-intro.html", "prefect_slides/002-core-features.html", "prefect_slides/003-setup.html", "prefect_slides/004-dynamic-workflow.html", "prefect_slides/005-task-management.html", "prefect_slides/006-deploy.html", "prefect_slides/007-observability.html", "prefect_slides/008-ecosystem.html", "prefect_slides/009-error-handling.html", "prefect_slides/010-best-practices.html", "prefect_slides/011-prefect-vs-airflow.html", "prefect_slides/012-prefect-vs-temporal.html", "prefect_slides/013-advanced.html", "prefect_slides/014-prefect-cloud.html", "prefect_slides/015-migration-airflow.html", "prefect_slides/016-scalability.html", "prefect_slides/017-testing.html", "prefect_slides/018-security.html", "prefect_slides/019-troubleshooting.html", "prefect_slides/020-resources.html"];
+        const slideFilenames = ["001-intro.html", "002-core-features.html", "003-setup.html", "004-dynamic-workflow.html", "005-task-management.html", "006-deploy.html", "007-observability.html", "008-ecosystem.html", "009-error-handling.html", "010-best-practices.html", "011-prefect-vs-airflow.html", "012-prefect-vs-temporal.html", "013-advanced.html", "014-prefect-cloud.html", "015-migration-airflow.html", "016-scalability.html", "017-testing.html", "018-security.html", "019-troubleshooting.html", "020-resources.html"];
+        let currentSlideIndex = 0;
+        
+        function loadSlide(slidePathWithPrefix, index) {
+            document.getElementById('slide-frame').src = slidePathWithPrefix;
+            currentSlideIndex = index;
+            updateUI();
+        }
+        
+        function updateUI() {
+            // Update slide counter
+            document.getElementById('current-slide').textContent = currentSlideIndex + 1;
+            
+            // Update active sidebar item
+            document.querySelectorAll('.slide-item').forEach((item, index) => {
+                item.classList.toggle('active', index === currentSlideIndex);
+            });
+            
+            // Update navigation buttons
+            document.getElementById('first-btn').disabled = currentSlideIndex === 0;
+            document.getElementById('prev-btn').disabled = currentSlideIndex === 0;
+            document.getElementById('next-btn').disabled = currentSlideIndex === slides.length - 1;
+            document.getElementById('last-btn').disabled = currentSlideIndex === slides.length - 1;
+        }
+        
+        function goToSlide(index) {
+            if (index >= 0 && index < slides.length) {
+                loadSlide(slides[index], index);
+            }
+        }
+        
+        function nextSlide() {
+            if (currentSlideIndex < slides.length - 1) {
+                goToSlide(currentSlideIndex + 1);
+            }
+        }
+        
+        function previousSlide() {
+            if (currentSlideIndex > 0) {
+                goToSlide(currentSlideIndex - 1);
+            }
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            switch(e.key) {
+                case 'ArrowLeft':
+                    previousSlide();
+                    break;
+                case 'ArrowRight':
+                    nextSlide();
+                    break;
+                case 'Home':
+                    goToSlide(0);
+                    break;
+                case 'End':
+                    goToSlide(slides.length - 1);
+                    break;
+            }
+        });
+        
+        // Initialize
+        updateUI();
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>012 - Prefect vs Temporal</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .slide-container { max-width: 1000px; margin: 0 auto; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); padding: 40px; min-height: 600px; }
+        h1 { color: #2c3e50; font-size: 2.5em; margin-bottom: 30px; text-align: center; border-bottom: 3px solid #3498db; padding-bottom: 15px; }
+        .slide-content { font-size: 1.1em; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95em; }
+        .comparison-table th { background: #3498db; color: white; padding: 12px; text-align: left; font-weight: 600; }
+        .comparison-table td { padding: 12px; border-bottom: 1px solid #ddd; vertical-align: top; }
+        .comparison-table tr:nth-child(even) { background: #f8f9fa; }
+        .comparison-table tr:hover { background: #e3f2fd; }
+        .highlight-box { background: linear-gradient(135deg, #74b9ff, #0984e3); color: white; padding: 20px; border-radius: 10px; margin: 20px 0; text-align: center; font-weight: 500; }
+        strong { color: #2c3e50; }
+        @media (max-width: 768px) { .slide-container { padding: 20px; margin: 10px; } h1 { font-size: 2em; } }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div style="background: #e74c3c; color: white; padding: 5px 15px; border-radius: 20px; display: inline-block; margin-bottom: 20px; font-size: 0.9em;">Appendix</div>
+        <h1>🆚 Prefect vs Temporal</h1>
+        <div class="slide-content">
+            <table class="comparison-table">
+                <thead>
+                    <tr><th>Aspect</th><th>Prefect</th><th>Temporal</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Primary Use Case</strong></td><td>Data workflows & ETL pipelines</td><td>Microservice orchestration</td></tr>
+                    <tr><td><strong>Language Support</strong></td><td>🟡 Python-first (Go SDK available)</td><td>🟢 Multi-language (Go, Java, Python, .NET, PHP)</td></tr>
+                    <tr><td><strong>State Management</strong></td><td>🟢 Automatic, transparent</td><td>🟢 Event sourcing, durable</td></tr>
+                    <tr><td><strong>Debugging</strong></td><td>🟢 Excellent visibility</td><td>🟡 Good but complex</td></tr>
+                    <tr><td><strong>Learning Curve</strong></td><td>🟢 Gentle</td><td>🔴 Steep, many abstractions</td></tr>
+                    <tr><td><strong>Scalability</strong></td><td>🟢 Excellent for data workloads</td><td>🟢 Excellent for service workflows</td></tr>

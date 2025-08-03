@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>013 - Advanced Features</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .slide-container { max-width: 1000px; margin: 0 auto; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); padding: 40px; min-height: 600px; }
+        h1 { color: #2c3e50; font-size: 2.5em; margin-bottom: 30px; text-align: center; border-bottom: 3px solid #3498db; padding-bottom: 15px; }
+        h3 { color: #2980b9; font-size: 1.4em; margin: 25px 0 15px 0; border-left: 4px solid #3498db; padding-left: 15px; }
+        h4 { color: #8e44ad; font-size: 1.2em; margin: 20px 0 10px 0; }
+        .slide-content { font-size: 1.1em; }
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 20px 0; }
+        .column { padding: 0 10px; }
+        ul { margin: 15px 0 15px 30px; }
+        li { margin: 8px 0; }
+        .code-block { background: #2c3e50; border-radius: 8px; padding: 20px; margin: 15px 0; overflow-x: auto; }
+        .code-block pre { color: #ecf0f1; font-family: 'Consolas', 'Monaco', 'Courier New', monospace; font-size: 0.9em; line-height: 1.4; }
+        @media (max-width: 768px) { .slide-container { padding: 20px; margin: 10px; } .two-column { grid-template-columns: 1fr; gap: 20px; } h1 { font-size: 2em; } .code-block { font-size: 0.8em; } }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div style="background: #e74c3c; color: white; padding: 5px 15px; border-radius: 20px; display: inline-block; margin-bottom: 20px; font-size: 0.9em;">Appendix</div>
+        <h1>🚀 Advanced Features</h1>
+        <div class="slide-content">
+            <h3>Prefect Blocks</h3>
+            <div class="two-column">
+                <div class="column">
+                    <h4>Configuration Management</h4>
+                    <ul>
+                        <li>Reusable configuration objects</li>
+                        <li>Type-safe parameters</li>
+                        <li>Version controlled</li>
+                        <li>Environment-specific configs</li>
+                    </ul>
+                    
+                    <div class="code-block">
+                        <pre><code>from prefect.blocks.core import Block
+
+class DatabaseConfig(Block):
+    host: str
+    port: int = 5432
+    database: str
+    
+    def get_connection(self):
+        return psycopg2.connect(
+            host=self.host,
+            port=self.port,
+            database=self.database
+        )</code></pre>
+                    </div>
+                </div>
+                <div class="column">
+                    <h4>Work Pools & Queues</h4>
+                    <ul>
+                        <li>Resource isolation</li>
+                        <li>Priority scheduling</li>
+                        <li>Automatic scaling</li>
+                        <li>Multi-cloud deployment</li>
+                    </ul>
+                    
+                    <h4>Artifacts & Results</h4>
+                    <ul>
+                        <li>Persist task outputs</li>
+                        <li>Structured metadata</li>
+                        <li>Link to external systems</li>
+                        <li>Data lineage tracking</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Subflows & Flow Composition</h3>
+            <div class="code-block">
+                <pre><code>@flow
+def data_ingestion_flow():
+    return extract_and_validate_data()
+
+@flow
+def transformation_flow(data):
+    return transform_and_enrich(data)
+
+@flow
+def main_pipeline():
+    raw_data = data_ingestion_flow()
+    processed_data = transformation_flow(raw_data)
+    load_to_warehouse(processed_data)</code></pre>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

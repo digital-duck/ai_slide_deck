@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>015 - Migration Strategies</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .slide-container { max-width: 1000px; margin: 0 auto; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); padding: 40px; min-height: 600px; }
+        h1 { color: #2c3e50; font-size: 2.5em; margin-bottom: 30px; text-align: center; border-bottom: 3px solid #3498db; padding-bottom: 15px; }
+        h3 { color: #2980b9; font-size: 1.4em; margin: 25px 0 15px 0; border-left: 4px solid #3498db; padding-left: 15px; }
+        h4 { color: #8e44ad; font-size: 1.2em; margin: 20px 0 10px 0; }
+        .slide-content { font-size: 1.1em; }
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 20px 0; }
+        .column { padding: 0 10px; }
+        ul { margin: 15px 0 15px 30px; }
+        li { margin: 8px 0; }
+        .code-block { background: #2c3e50; border-radius: 8px; padding: 20px; margin: 15px 0; overflow-x: auto; }
+        .code-block pre { color: #ecf0f1; font-family: 'Consolas', 'Monaco', 'Courier New', monospace; font-size: 0.9em; line-height: 1.4; }
+        .highlight-box { background: linear-gradient(135deg, #74b9ff, #0984e3); color: white; padding: 20px; border-radius: 10px; margin: 20px 0; text-align: center; font-weight: 500; }
+        strong { color: #2c3e50; }
+        @media (max-width: 768px) { .slide-container { padding: 20px; margin: 10px; } .two-column { grid-template-columns: 1fr; gap: 20px; } h1 { font-size: 2em; } .code-block { font-size: 0.8em; } }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div style="background: #e74c3c; color: white; padding: 5px 15px; border-radius: 20px; display: inline-block; margin-bottom: 20px; font-size: 0.9em;">Appendix</div>
+        <h1>🔄 Migration Strategies</h1>
+        <div class="slide-content">
+            <h3>From Airflow to Prefect</h3>
+            <div class="two-column">
+                <div class="column">
+                    <h4>Assessment Phase</h4>
+                    <ul>
+                        <li>Inventory existing DAGs</li>
+                        <li>Identify dependencies</li>
+                        <li>Map custom operators</li>
+                        <li>Analyze scheduling patterns</li>
+                    </ul>
+                    
+                    <h4>Conversion Process</h4>
+                    <ul>
+                        <li>DAGs → Flows</li>
+                        <li>Tasks remain similar</li>
+                        <li>Operators → Task functions</li>
+                        <li>XComs → Return values</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <div class="code-block">
+                        <pre><code># Airflow DAG
+from airflow import DAG
+from airflow.operators.python import PythonOperator
+
+dag = DAG('my_dag', schedule='@daily')
+
+task1 = PythonOperator(
+    task_id='extract',
+    python_callable=extract_data,
+    dag=dag
+)
+
+# Prefect Flow
+from prefect import flow, task
+
+@task
+def extract_data():
+    # Same function
+    pass
+
+@flow(schedule="0 0 * * *")
+def my_flow():
+    extract_data()</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Migration Approaches</h3>
+            <ul>
+                <li><strong>Big Bang:</strong> Convert all workflows at once</li>
+                <li><strong>Gradual:</strong> Migrate workflows incrementally</li>
+                <li><strong>Parallel:</strong> Run both systems during transition</li>
+                <li><strong>Greenfield:</strong> Start fresh with new workflows</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <p><strong>Pro Tip:</strong> Start with least critical workflows to gain confidence</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

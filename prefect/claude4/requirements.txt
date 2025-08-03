@@ -1,0 +1,5 @@
+click
+weasyprint
+PyPDF2
+playwright
+# playwright install  # Downloads browser binaries in terminal

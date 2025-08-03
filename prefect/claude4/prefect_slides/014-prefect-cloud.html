@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>014 - Prefect Cloud Features</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .slide-container { max-width: 1000px; margin: 0 auto; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); padding: 40px; min-height: 600px; }
+        h1 { color: #2c3e50; font-size: 2.5em; margin-bottom: 30px; text-align: center; border-bottom: 3px solid #3498db; padding-bottom: 15px; }
+        h3 { color: #2980b9; font-size: 1.4em; margin: 25px 0 15px 0; border-left: 4px solid #3498db; padding-left: 15px; }
+        h4 { color: #8e44ad; font-size: 1.2em; margin: 20px 0 10px 0; }
+        .slide-content { font-size: 1.1em; }
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 20px 0; }
+        .column { padding: 0 10px; }
+        ul { margin: 15px 0 15px 30px; }
+        li { margin: 8px 0; }
+        .highlight-box { background: linear-gradient(135deg, #74b9ff, #0984e3); color: white; padding: 20px; border-radius: 10px; margin: 20px 0; text-align: center; font-weight: 500; }
+        strong { color: #2c3e50; }
+        p { margin: 10px 0; }
+        @media (max-width: 768px) { .slide-container { padding: 20px; margin: 10px; } .two-column { grid-template-columns: 1fr; gap: 20px; } h1 { font-size: 2em; } }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div style="background: #e74c3c; color: white; padding: 5px 15px; border-radius: 20px; display: inline-block; margin-bottom: 20px; font-size: 0.9em;">Appendix</div>
+        <h1>☁️ Prefect Cloud Features</h1>
+        <div class="slide-content">
+            <h3>Enterprise-Grade Platform</h3>
+            <div class="two-column">
+                <div class="column">
+                    <h4>Collaboration</h4>
+                    <ul>
+                        <li>Multi-user workspaces</li>
+                        <li>Role-based access control</li>
+                        <li>Team management</li>
+                        <li>Shared resources</li>
+                    </ul>
+                    
+                    <h4>Compliance & Security</h4>
+                    <ul>
+                        <li>SOC 2 Type II certified</li>
+                        <li>SAML/SSO integration</li>
+                        <li>Audit logging</li>
+                        <li>Data encryption</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h4>Operational Excellence</h4>
+                    <ul>
+                        <li>99.9% uptime SLA</li>
+                        <li>Global CDN</li>
+                        <li>Automated backups</li>
+                        <li>24/7 monitoring</li>
+                    </ul>
+                    
+                    <h4>Advanced Analytics</h4>
+                    <ul>
+                        <li>Custom dashboards</li>
+                        <li>Cost optimization insights</li>
+                        <li>Performance analytics</li>
+                        <li>Data export APIs</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Hybrid Architecture</h3>
+            <div class="highlight-box">
+                <p><strong>Control Plane:</strong> Prefect Cloud manages orchestration, UI, and metadata</p>
+                <p><strong>Data Plane:</strong> Your infrastructure executes workloads - data never leaves your environment</p>
+            </div>
+            
+            <h3>Pricing Tiers</h3>
+            <ul>
+                <li><strong>Personal:</strong> Free for individuals</li>
+                <li><strong>Pro:</strong> $39/month for small teams</li>
+                <li><strong>Enterprise:</strong> Custom pricing for large organizations</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

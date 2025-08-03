@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>003 - Quick Setup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .slide-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 40px;
+            min-height: 600px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+        }
+        
+        h3 {
+            color: #2980b9;
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        
+        .slide-content {
+            font-size: 1.1em;
+        }
+        
+        .code-block {
+            background: #2c3e50;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        
+        .code-block pre {
+            color: #ecf0f1;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        
+        .code-block code {
+            color: #ecf0f1;
+        }
+        
+        @media (max-width: 768px) {
+            .slide-container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .code-block {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <h1>⚡ Quick Setup</h1>
+        <div class="slide-content">
+            <h3>1. Installation</h3>
+            <div class="code-block">
+                <pre><code># Install Prefect
+pip install prefect
+
+# Or with extras
+pip install "prefect[dev,kubernetes]"</code></pre>
+            </div>
+            
+            <h3>2. First Flow</h3>
+            <div class="code-block">
+                <pre><code>from prefect import flow, task
+
+@task
+def say_hello(name: str) -> str:
+    return f"Hello, {name}!"
+
+@flow
+def hello_world():
+    greeting = say_hello("Prefect")
+    print(greeting)
+
+if __name__ == "__main__":
+    hello_world()</code></pre>
+            </div>
+            
+            <h3>3. Run It</h3>
+            <div class="code-block">
+                <pre><code>python hello_flow.py</code></pre>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>010 - Best Practices</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .slide-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 40px;
+            min-height: 600px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+        }
+        
+        h3 {
+            color: #2980b9;
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        
+        h4 {
+            color: #8e44ad;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+        }
+        
+        .slide-content {
+            font-size: 1.1em;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .column {
+            padding: 0 10px;
+        }
+        
+        ul {
+            margin: 15px 0 15px 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        strong {
+            color: #2c3e50;
+        }
+        
+        @media (max-width: 768px) {
+            .slide-container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <h1>⭐ Best Practices</h1>
+        <div class="slide-content">
+            <h3>Development Guidelines</h3>
+            <div class="two-column">
+                <div class="column">
+                    <h4>Flow Design</h4>
+                    <ul>
+                        <li>Keep flows focused and cohesive</li>
+                        <li>Use meaningful names</li>
+                        <li>Document parameters</li>
+                        <li>Version your flows</li>
+                    </ul>
+                    
+                    <h4>Task Organization</h4>
+                    <ul>
+                        <li>Single responsibility principle</li>
+                        <li>Idempotent operations</li>
+                        <li>Clear input/output contracts</li>
+                        <li>Appropriate granularity</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h4>Testing Strategy</h4>
+                    <ul>
+                        <li>Unit test individual tasks</li>
+                        <li>Integration test flows</li>
+                        <li>Mock external dependencies</li>
+                        <li>Validate with sample data</li>
+                    </ul>
+                    
+                    <h4>Production Readiness</h4>
+                    <ul>
+                        <li>Comprehensive logging</li>
+                        <li>Resource monitoring</li>
+                        <li>Secrets management</li>
+                        <li>Disaster recovery plans</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <p><strong>Golden Rule:</strong> Design for failure - assume things will go wrong and plan accordingly</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
