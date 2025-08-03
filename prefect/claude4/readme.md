@@ -83,13 +83,9 @@ Perfect! I've created a comprehensive Prefect slide deck generator that includes
 python slide_generator.py generate -d "prefect_slides" -t "Prefect" -o index_prefect.html
 
 # generate PDF
-python slide_generator.py generate-pdf -d prefect_slides -m weasyprint -o prefect_slides.pdf
+python slide_generator.py generate-pdf -d prefect_slides -m weasyprint -o prefect_slides_weasyprint.pdf
 
-python slide_generator.py generate-pdf -d prefect_slides -m playwright -o prefect_slides2.pdf
-
-python slide_generator.py generate-pdf -d prefect_slides -m playwright-merge -o prefect_slides3.pdf
-
-
+python slide_generator.py generate-pdf -d prefect_slides -m playwright-merge -o prefect_slides_playwright.pdf
 ```
 
 2. **Open the presentation:**

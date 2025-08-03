@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prefect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f6fa;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        
+        .sidebar {
+            width: 300px;
+            background: #2c3e50;
+            color: white;
+            overflow-y: auto;
+            padding: 20px 0;
+        }
+        
+        .sidebar h2 {
+            text-align: center;
+            padding: 0 20px 20px 20px;
+            border-bottom: 2px solid #34495e;
+            margin-bottom: 20px;
+            color: #ecf0f1;
+            font-size: 1.2em;
+        }
+        
+        .section h3 {
+            background: #34495e;
+            padding: 10px 20px;
+            margin: 10px 0 5px 0;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .slide-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-left: 4px solid transparent;
+            font-size: 0.9em;
+        }
+        
+        .slide-item:hover {
+            background: #34495e;
+        }
+        
+        .slide-item.active {
+            background: #3498db;
+            border-left-color: #2980b9;
+            font-weight: 600;
+        }
+        
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .slide-frame {
+            flex: 1;
+            border: none;
+            background: white;
+        }
+        
+        .navigation {
+            background: white;
+            padding: 15px 30px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .nav-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-btn:hover:not(:disabled) {
+            background: #2980b9;
+        }
+        
+        .nav-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+        
+        .pdf-btn {
+            background: #e74c3c !important;
+            margin-left: 10px;
+        }
+        
+        .pdf-btn:hover {
+            background: #c0392b !important;
+        }
+        
+        #pdf-status {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .slide-counter {
+            background: #ecf0f1;
+            padding: 10px 20px;
+            text-align: center;
+            color: #2c3e50;
+            font-weight: 600;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: 200px;
+            }
+            
+            .navigation {
+                padding: 10px 15px;
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>🚀 Prefect</h2>
+            <div class="section"><h3>Main</h3>
+            <div class="slide-item active" onclick="loadSlide('prefect_slides/001-title.html', 0)">
+                001. Title
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/002-what.html', 1)">
+                002. What
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/003-features.html', 2)">
+                003. Features
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/004-setup.html', 3)">
+                004. Setup
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/005-1st-app.html', 4)">
+                005. 1St App
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/006-deploy.html', 5)">
+                006. Deploy
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/007-use-cases.html', 6)">
+                007. World Applications
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/008-prefect-airflow.html', 7)">
+                008. Prefect Airflow
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/009-prefect-dagster.html', 8)">
+                009. Prefect Dagster
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/010-summary.html', 9)">
+                010. Summary
+            </div>
+        </div><div class="section"><h3>Appendix</h3>
+            <div class="slide-item " onclick="loadSlide('prefect_slides/011-advanced-features.html', 10)">
+                011. Advanced Features
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/012-integration-v1.html', 11)">
+                012. Integration V1
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/012-integration.html', 12)">
+                012. Integration
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/013-best-practices.html', 13)">
+                013. Best Practices
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/014-debug.html', 14)">
+                014. Debug
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/015-performance.html', 15)">
+                015. Performance
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/016-security.html', 16)">
+                016. Security
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/017-use-cases.html', 17)">
+                017. Use Cases
+            </div>
+        
+            <div class="slide-item " onclick="loadSlide('prefect_slides/018-resources.html', 18)">
+                018. Resources
+            </div>
+        </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="slide-counter">
+                <span id="current-slide">1</span> / 19
+            </div>
+            
+            <iframe id="slide-frame" class="slide-frame" src="prefect_slides/001-title.html"></iframe>
+            
+            <div class="navigation">
+                <button class="nav-btn" id="first-btn" onclick="goToSlide(0)">&lt;&lt;</button>
+                <button class="nav-btn" id="prev-btn" onclick="previousSlide()">&lt;</button>
+                <button class="nav-btn" id="next-btn" onclick="nextSlide()">&gt;</button>
+                <button class="nav-btn" id="last-btn" onclick="goToSlide(18)">&gt;&gt;</button>
+                <button class="nav-btn pdf-btn" id="pdf-btn" onclick="generatePDF()" title="Generate PDF">📄 PDF</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- PDF Generation Status -->
+    <div id="pdf-status">
+        <div id="pdf-message">Generating PDF...</div>
+        <div style="text-align: center; margin-top: 10px;">
+            <div style="display: inline-block; width: 20px; height: 20px; border: 2px solid #f3f3f3; border-top: 2px solid #3498db; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+        </div>
+    </div>
+    
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    
+    <script>
+        const slides = ["prefect_slides/001-title.html", "prefect_slides/002-what.html", "prefect_slides/003-features.html", "prefect_slides/004-setup.html", "prefect_slides/005-1st-app.html", "prefect_slides/006-deploy.html", "prefect_slides/007-use-cases.html", "prefect_slides/008-prefect-airflow.html", "prefect_slides/009-prefect-dagster.html", "prefect_slides/010-summary.html", "prefect_slides/011-advanced-features.html", "prefect_slides/012-integration-v1.html", "prefect_slides/012-integration.html", "prefect_slides/013-best-practices.html", "prefect_slides/014-debug.html", "prefect_slides/015-performance.html", "prefect_slides/016-security.html", "prefect_slides/017-use-cases.html", "prefect_slides/018-resources.html"];
+        const slideFilenames = ["001-title.html", "002-what.html", "003-features.html", "004-setup.html", "005-1st-app.html", "006-deploy.html", "007-use-cases.html", "008-prefect-airflow.html", "009-prefect-dagster.html", "010-summary.html", "011-advanced-features.html", "012-integration-v1.html", "012-integration.html", "013-best-practices.html", "014-debug.html", "015-performance.html", "016-security.html", "017-use-cases.html", "018-resources.html"];
+        let currentSlideIndex = 0;
+        
+        function loadSlide(slidePathWithPrefix, index) {
+            document.getElementById('slide-frame').src = slidePathWithPrefix;
+            currentSlideIndex = index;
+            updateUI();
+        }
+        
+        function updateUI() {
+            // Update slide counter
+            document.getElementById('current-slide').textContent = currentSlideIndex + 1;
+            
+            // Update active sidebar item
+            document.querySelectorAll('.slide-item').forEach((item, index) => {
+                item.classList.toggle('active', index === currentSlideIndex);
+            });
+            
+            // Update navigation buttons
+            document.getElementById('first-btn').disabled = currentSlideIndex === 0;
+            document.getElementById('prev-btn').disabled = currentSlideIndex === 0;
+            document.getElementById('next-btn').disabled = currentSlideIndex === slides.length - 1;
+            document.getElementById('last-btn').disabled = currentSlideIndex === slides.length - 1;
+        }
+        
+        function goToSlide(index) {
+            if (index >= 0 && index < slides.length) {
+                loadSlide(slides[index], index);
+            }
+        }
+        
+        function nextSlide() {
+            if (currentSlideIndex < slides.length - 1) {
+                goToSlide(currentSlideIndex + 1);
+            }
+        }
+        
+        function previousSlide() {
+            if (currentSlideIndex > 0) {
+                goToSlide(currentSlideIndex - 1);
+            }
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            switch(e.key) {
+                case 'ArrowLeft':
+                    previousSlide();
+                    break;
+                case 'ArrowRight':
+                    nextSlide();
+                    break;
+                case 'Home':
+                    goToSlide(0);
+                    break;
+                case 'End':
+                    goToSlide(slides.length - 1);
+                    break;
+            }
+        });
+        
+        // Initialize
+        updateUI();
+        
+        // PDF Generation Function
+        async function generatePDF() {
+            const pdfStatus = document.getElementById('pdf-status');
+            const pdfMessage = document.getElementById('pdf-message');
+            
+            try {
+                pdfStatus.style.display = 'block';
+                pdfMessage.textContent = 'Preparing PDF generation...';
+                
+                // Call the PDF generation endpoint
+                const response = await fetch('/generate-pdf', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        slides: slideFilenames,
+                        title: 'Prefect'
+                    })
+                });
+                
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'prefect_slides.pdf';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                    
+                    pdfMessage.textContent = 'PDF downloaded successfully!';
+                    setTimeout(() => {
+                        pdfStatus.style.display = 'none';
+                    }, 2000);
+                } else {
+                    throw new Error('PDF generation failed');
+                }
+            } catch (error) {
+                console.error('PDF generation error:', error);
+                pdfMessage.textContent = 'PDF generation failed. Please try the CLI command instead.';
+                setTimeout(() => {
+                    pdfStatus.style.display = 'none';
+                }, 3000);
+            }
+        }
+    </script>
+</body>
+</html>

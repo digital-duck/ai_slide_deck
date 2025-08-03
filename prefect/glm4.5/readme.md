@@ -18,3 +18,14 @@ All additional slides under Appendix section
 Use HTML for each page
 
 ```
+
+
+```bash
+
+# gen HTML
+python slide_generator.py generate -d "prefect_slides" -t "Prefect" -o index_prefect.html
+
+# gen PDF
+python slide_generator.py generate-pdf -d prefect_slides -m weasyprint -t "Prefect" -o prefect_gen.pdf
+
+```
